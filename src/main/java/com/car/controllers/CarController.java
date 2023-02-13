@@ -1,6 +1,7 @@
 package com.car.controllers;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,8 +39,10 @@ public class CarController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<CarroDto> getById(@PathVariable(value="id") Integer id) {
-		
-		return ResponseEntity.status(HttpStatus.OK).body(carroService.getById(id));
+		var carroDto = carroService.getById(id);
+		return Objects.nonNull(carroDto) ? 
+				ResponseEntity.status(HttpStatus.OK).body(carroDto)
+				: ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		
 	}
 

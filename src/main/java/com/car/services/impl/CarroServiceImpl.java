@@ -1,6 +1,7 @@
 package com.car.services.impl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,10 @@ public class CarroServiceImpl implements CarroService {
 	
 	@Override
 	public CarroDto getById(Integer id) {
-		return toCarroDto(carroRepository.getById(id));
+		var carroOptional = carroRepository.findById(id);
+		if(carroOptional.isPresent())
+			return toCarroDto(carroOptional.get());
+		return null;
 	}
 	
 	private CarroDto toCarroDto(CarroModel carroModel) {
