@@ -32,14 +32,14 @@ public class CarController {
 	@GetMapping
 	public ResponseEntity<List<CarroDto>> getAll() {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(carroService.getCars());
+		return ResponseEntity.status(HttpStatus.OK).body(carroService.getCars());
 		
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<CarroDto> getById(@PathVariable(value="id") Integer id) {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(carroService.getById(id));
+		return ResponseEntity.status(HttpStatus.OK).body(carroService.getById(id));
 		
 	}
 
