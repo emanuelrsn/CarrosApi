@@ -3,7 +3,6 @@ package com.car.controllers;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.car.dtos.CarroDto;
 import com.car.services.CarroService;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @RestController
 @RequestMapping("/carros")
 public class CarController {
 	
-	@Autowired
-	private CarroService carroService;
+	private final CarroService carroService;
 	
 	@PostMapping
 	public ResponseEntity<CarroDto> saveCar(@RequestBody CarroDto carroDto) {

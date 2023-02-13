@@ -1,10 +1,8 @@
 package com.car.services.impl;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.car.dtos.CarroDto;
@@ -12,11 +10,13 @@ import com.car.models.CarroModel;
 import com.car.repositories.CarroRepository;
 import com.car.services.CarroService;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class CarroServiceImpl implements CarroService {
 
-	@Autowired
-	private CarroRepository carroRepository;
+	private final CarroRepository carroRepository;
 	
 	
 	@Override
@@ -51,7 +51,5 @@ public class CarroServiceImpl implements CarroService {
 		carroDto.setId(carroModel.getId());
 		return carroDto;
 	}
-
-	
 
 }
