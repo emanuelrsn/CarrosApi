@@ -1,3 +1,7 @@
+server:
+  servlet:
+   context-path: '/carro-service/'
+   
 spring:
   application:
     name: carro-service
